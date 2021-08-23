@@ -22,7 +22,7 @@ public class PostsServiceImpl implements PostsService{
         else if(postsRepository.existsByTitleEn(post.getTitleEn())) {
             throw new EntityAlreadyExistsException(Post.class, "titleEn", post.getTitleEn());
         }
-        else if(postsRepository.existsByTitleAr(post.getTitleAr())) {   
+        else if(postsRepository.existsByTitleAr(post.getTitleAr())) {
             throw new EntityAlreadyExistsException(Post.class, "titleAr", post.getTitleAr());
         }
         postsRepository.save(post);
