@@ -21,7 +21,7 @@ public class GlobalAdvice extends ResponseEntityBuilder {
         apiError.addValidationErrors(ex.getConstraintViolations());
         return ResponseEntityBuilder.build(apiError);
     }
-    @ExceptionHandler({EntityAlreadyExistsException.class, EntityNotFoundException.class})
+    @ExceptionHandler({EntityAlreadyExistsException.class, EntityNotFoundException.class, IllegalArgumentException.class})
     public ResponseEntity<Object> handleInvalidInput(Exception ex, WebRequest request) {
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
         apiError.setMessage(ex.getMessage());
