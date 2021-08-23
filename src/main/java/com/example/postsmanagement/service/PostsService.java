@@ -5,5 +5,6 @@ import com.example.postsmanagement.repo.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public interface PostsService {
-    public void create(Post post);
+    public Post create(Post post);
+    public void delete(Integer postId);
 }

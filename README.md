@@ -12,7 +12,8 @@
 
 - "`Post`" entity
 - `Create` API for "`Post`" entity
-- unified error model
+- `Delete` API for "`Post`" entity
+- Unified error model
 - Error Handling
 
 ##### <u>To be done:</u>
@@ -20,7 +21,6 @@
 - "`Interest`" entity
 - `Get` API with paging for "`Post`" entity
 - `Update` API for "`Post`" entity
-- `Delete` API for "`Post`" entity
 
 ***
 

@@ -10,4 +10,6 @@ public interface PostsRepository extends CrudRepository<Post, Integer> {
     boolean existsByTitleEn(String titleEn);
 
     boolean existsByTitleAr(String TitleAr);
+
+    void deleteByPostId(int postId);
 }

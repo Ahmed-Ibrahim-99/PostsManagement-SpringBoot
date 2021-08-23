@@ -2,6 +2,8 @@ package com.example.postsmanagement.model;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -9,6 +11,8 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
+@EnableJpaAuditing
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="Post", uniqueConstraints = {@UniqueConstraint(columnNames = {"postId"})})
 @SecondaryTables({
         @SecondaryTable(name="Interest")
@@ -34,9 +38,9 @@ public class Post {
     @Size(min=1, max=20, message="body length is out of boundary")
     private String bodyAr;
     @CreatedDate
-    private Instant createdAt;
+    private LocalDateTime createdAt;
     @LastModifiedDate
-    private Instant modifiedAt;
+    private LocalDateTime modifiedAt;
     @NotNull
     @NotEmpty
     private String imageUrl;
@@ -61,11 +65,11 @@ public class Post {
         this.bodyEn = bodyEn;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setModifiedAt(Instant modifiedAt) {
+    public void setModifiedAt(LocalDateTime modifiedAt) {
         this.modifiedAt = modifiedAt;
     }
 
@@ -105,11 +109,11 @@ public class Post {
         return bodyEn;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public Instant getModifiedAt() {
+    public LocalDateTime getModifiedAt() {
         return modifiedAt;
     }
 
