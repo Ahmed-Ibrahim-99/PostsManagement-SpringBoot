@@ -5,4 +5,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PostsRepository extends CrudRepository<Post, Integer> {
 
+    boolean existsByPostId(int postId);
+
+    boolean existsByTitleEn(String titleEn);
+
+    boolean existsByTitleAr(String TitleAr);
 }
