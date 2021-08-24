@@ -15,13 +15,13 @@
 - `Delete` API for "`Post`" entity
 - `Get` API with paging for "`Post`" entity
 - `Get By Id` API for "`Post`" entity
+- `Update` API for "`Post`" entity
 - Unified error model
 - Error Handling
 
 ##### <u>To be done:</u>
 
 - "`Interest`" entity
-- `Update` API for "`Post`" entity
 
 ***
 
