@@ -19,4 +19,5 @@ public interface PostsRepository extends PagingAndSortingRepository<Post, Intege
     Post findFirstByPostId(int postId);
 
     Page<Post> findAll(Pageable pageable);
+
 }

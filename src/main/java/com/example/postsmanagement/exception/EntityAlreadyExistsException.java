@@ -11,7 +11,7 @@ public class EntityAlreadyExistsException extends RuntimeException {
         super(EntityAlreadyExistsException.generateMessage(entity.getSimpleName(), toMap(String.class, String.class, createParamsMap)));
     }
     private static String generateMessage(String entity, Map<String, String> createParams) {
-        return StringUtils.capitalize(entity) + "already exists For" + createParams;
+        return StringUtils.capitalize(entity) + " already exists For" + createParams;
     }
 
     private static <K,V> Map<K, V> toMap(

@@ -2,6 +2,7 @@ package com.example.postsmanagement.controller;
 
 import com.example.postsmanagement.controller.responseModel.PaginationResponse;
 import com.example.postsmanagement.model.Post;
+import com.example.postsmanagement.model.dto.PostDto;
 import com.example.postsmanagement.repo.PostsRepository;
 import com.example.postsmanagement.service.PostsService;
 import org.springframework.http.HttpHeaders;
@@ -52,5 +53,10 @@ public class PostsController {
     @DeleteMapping("/posts/{postId}")
     private void DeletePost(@PathVariable Integer postId) {
         postService.delete(postId);
+    }
+
+    @PatchMapping("/posts/{postId}")
+    private void UpdatePost(@PathVariable Integer postId, @RequestBody PostDto dto) {
+        postService.update(postId, dto);
     }
 }

@@ -9,11 +9,12 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
+@Table(name="Post", uniqueConstraints = {@UniqueConstraint(columnNames = {"postId"})})
 @EnableJpaAuditing
 @EntityListeners(AuditingEntityListener.class)
-@Table(name="Post", uniqueConstraints = {@UniqueConstraint(columnNames = {"postId"})})
 @SecondaryTables({
         @SecondaryTable(name="Interest")
 })
@@ -31,11 +32,11 @@ public class Post {
     private String titleAr;
     @NotNull
     @NotEmpty
-    @Size(min=1, max=20, message="body length is out of boundary")
+    @Size(min=1, max=300, message="body length is out of boundary")
     private String bodyEn;
     @NotNull
     @NotEmpty
-    @Size(min=1, max=20, message="body length is out of boundary")
+    @Size(min=1, max=300, message="body length is out of boundary")
     private String bodyAr;
     @CreatedDate
     private LocalDateTime createdAt;
@@ -127,5 +128,18 @@ public class Post {
 
     public Integer getInterestId() {
         return interestId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return Objects.equals(postId, post.postId) && Objects.equals(titleEn, post.titleEn) && Objects.equals(titleAr, post.titleAr) && Objects.equals(bodyEn, post.bodyEn) && Objects.equals(bodyAr, post.bodyAr) && Objects.equals(createdAt, post.createdAt) && Objects.equals(modifiedAt, post.modifiedAt) && Objects.equals(imageUrl, post.imageUrl) && Objects.equals(url, post.url) && Objects.equals(interestId, post.interestId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(postId, titleEn, titleAr, bodyEn, bodyAr, createdAt, modifiedAt, imageUrl, url, interestId);
     }
 }
