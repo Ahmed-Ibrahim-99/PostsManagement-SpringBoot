@@ -1,6 +1,8 @@
 package com.example.postsmanagement.controller;
 
+import com.example.postsmanagement.advice.errorModel.ApiError;
 import com.example.postsmanagement.controller.responseModel.PaginationResponse;
+import com.example.postsmanagement.exception.ConstraintValidationException;
 import com.example.postsmanagement.model.Post;
 import com.example.postsmanagement.model.dto.PostDto;
 import com.example.postsmanagement.repo.PostsRepository;
@@ -8,9 +10,13 @@ import com.example.postsmanagement.service.PostsService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -46,7 +52,11 @@ public class PostsController {
     }
 
     @PostMapping("/posts")
-    private Post CreatePost(@RequestBody Post post) {
+    private Post CreatePost(@RequestBody @Valid Post post, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            throw new ConstraintValidationException(errors);
+        }
         return postService.create(post);
     }
 

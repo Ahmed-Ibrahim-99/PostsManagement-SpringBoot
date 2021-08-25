@@ -51,71 +51,26 @@ public class ApiError {
         addSubError(new ApiValidationError(message));
     }
 
-    private void addValidationError(FieldError fieldError) {
-        this.addValidationError(
-                fieldError.getField(),
-                fieldError.getRejectedValue(),
-                fieldError.getDefaultMessage());
-    }
-
-    public void addValidationErrors(List<FieldError> fieldErrors) {
-        fieldErrors.forEach(this::addValidationError);
-    }
-
-    private void addValidationError(ObjectError objectError) {
-        this.addValidationError(
-                objectError.getDefaultMessage());
-    }
-
-    public void addValidationError(List<ObjectError> globalErrors) {
-        globalErrors.forEach(this::addValidationError);
-    }
-
-    private void addValidationError(ConstraintViolation<?> cv) {
-        //object, field, rejectedValue, message
-        this.addValidationError(
-                ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
-                cv.getInvalidValue(),
-                cv.getMessage());
-    }
-
-    public void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
-        constraintViolations.forEach(this::addValidationError);
-    }
-
-    private void addValidationError(String rejectedTitle, String rejectedValue) {
-        this.addValidationError(rejectedTitle, rejectedValue, rejectedTitle + " shouldn't be duplicated");
-    }
-
-    public void addValidationErrors(Map<String, String> rejectedParams) {
-        for (Map.Entry<String,String> entry : rejectedParams.entrySet())
-        {
-            this.addValidationError(entry.getKey(), entry.getValue());
-        }
+    public void addValidationErrors(List<ObjectError> errors) {
+        errors.forEach(error -> {
+            FieldError fieldError = (FieldError) error;
+            addValidationError(fieldError.getField(), fieldError.getRejectedValue(), fieldError.getDefaultMessage());
+        });
     }
 
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public List<ApiSubError> getSubErrors() {
         return subErrors;
     }
 
-    public void setSubErrors(List<ApiSubError> subErrors) {
-        this.subErrors = subErrors;
+    public void setMessage(String message) {
+        this.message = message;
     }
-
 }

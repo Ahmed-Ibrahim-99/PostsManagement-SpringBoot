@@ -26,16 +26,7 @@ public class PostsServiceImpl implements PostsService {
     }
 
     public Post create(Post post) {
-        if(postsRepository.existsByTitleEn(post.getTitleEn()) &&
-           postsRepository.existsByTitleAr(post.getTitleAr())) {
-            throw new EntityAlreadyExistsException(Post.class, "titleEn", post.getTitleEn(), "titleAr", post.getTitleAr());
-        }
-        else if(postsRepository.existsByTitleEn(post.getTitleEn())) {
-            throw new EntityAlreadyExistsException(Post.class, "titleEn", post.getTitleEn());
-        }
-        else if(postsRepository.existsByTitleAr(post.getTitleAr())) {
-            throw new EntityAlreadyExistsException(Post.class, "titleAr", post.getTitleAr());
-        }
+
         return postsRepository.save(post);
     }
 
@@ -86,19 +77,6 @@ public class PostsServiceImpl implements PostsService {
         String url = dto.getUrl();
         Integer interestId = dto.getInterestId();
 
-        if(postsRepository.existsByTitleEn(titleEn) &&
-                postsRepository.existsByTitleAr(titleAr) && !post.getTitleEn().equals(titleEn)
-                && !post.getTitleAr().equals(titleAr)) {
-            throw new EntityAlreadyExistsException(Post.class, "titleEn", titleEn, "titleAr", titleAr);
-        }
-        else if(postsRepository.existsByTitleEn(titleEn) && !post.getTitleEn().equals(titleEn)) {
-            throw new EntityAlreadyExistsException(Post.class, "titleEn", titleEn);
-        }
-        else if(postsRepository.existsByTitleAr(titleAr) && !post.getTitleAr().equals(titleAr)) {
-            throw new EntityAlreadyExistsException(Post.class, "titleAr", titleAr);
-        }
-
-        // update non-null values only
         if(titleEn != null) {
             post.setTitleEn(titleEn);
         }
