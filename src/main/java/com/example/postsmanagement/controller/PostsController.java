@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 public class PostsController {
     private PostsService postService;
-    public PostsController(PostsService postService, PostsRepository postsRepository) {
+    public PostsController(PostsService postService) {
         this.postService = postService;
     }
 
@@ -37,7 +37,7 @@ public class PostsController {
         Long entitiesCount = postService.countAll();
         boolean nextPage = entitiesCount/currentPageLimit - 1 > currentPageNumber;
         PaginationResponse<Post> paginationResponse = new PaginationResponse<Post>(entitiesCount,nextPage,posts);
-        return new ResponseEntity<PaginationResponse<Post>>(paginationResponse, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(paginationResponse, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/posts/{postId}")

@@ -12,7 +12,10 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+// To be used in update request
 public class PostDto {
+    // Removed some members from Post:
+    // postId, createdAt, modifiedAt
     private String titleEn;
     private String titleAr;
     private String bodyEn;

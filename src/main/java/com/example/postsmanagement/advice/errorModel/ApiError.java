@@ -24,7 +24,7 @@ public class ApiError {
     private HttpStatus status;
     private String message;
     private String debugMessage;
-    private List<ApiSubError> subErrors;
+    private List<ApiSubError> subErrors = new ArrayList<>();
 
     private ApiError() {
         timestamp = LocalDateTime.now();
@@ -36,8 +36,7 @@ public class ApiError {
     }
 
     public ApiError(HttpStatus status, Throwable ex) {
-        this();
-        this.status = status;
+        this(status);
         this.message = "Unexpected error";
         this.debugMessage = ex.getLocalizedMessage();
     }
@@ -50,9 +49,6 @@ public class ApiError {
     }
 
     private void addSubError(ApiSubError subError) {
-        if (subErrors == null) {
-            subErrors = new ArrayList<>();
-        }
         subErrors.add(subError);
     }
 
@@ -87,6 +83,7 @@ public class ApiError {
     }
 
     private void addValidationError(ConstraintViolation<?> cv) {
+        //object, field, rejectedValue, message
         this.addValidationError(
                 cv.getRootBeanClass().getSimpleName(),
                 ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),

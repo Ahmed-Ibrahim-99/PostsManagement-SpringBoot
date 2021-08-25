@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+    This service ensures no two Posts have the same title(En/Ar)
+ */
 @Service
 @Transactional
 public class PostsServiceImpl implements PostsService {
@@ -57,6 +59,7 @@ public class PostsServiceImpl implements PostsService {
     }
 
     public Long countAll() {
+        // used to return number of entities in Get Request with Pagination
         return postsRepository.count();
     }
 
@@ -95,6 +98,7 @@ public class PostsServiceImpl implements PostsService {
             throw new EntityAlreadyExistsException(Post.class, "titleAr", titleAr);
         }
 
+        // update non-null values only
         if(titleEn != null) {
             post.setTitleEn(titleEn);
         }
