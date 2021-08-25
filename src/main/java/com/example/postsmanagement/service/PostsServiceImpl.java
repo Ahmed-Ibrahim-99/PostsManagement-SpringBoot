@@ -25,8 +25,21 @@ public class PostsServiceImpl implements PostsService {
         this.postsRepository = postsRepository;
     }
 
+    private List<String> checkDuplication(String titleEn, String titleAr) {
+        List<String> duplicatedTitles = new ArrayList<>();
+        if(postsRepository.existsByTitleEn(titleEn)) {
+            duplicatedTitles.add("titleEn");
+        }
+        if(postsRepository.existsByTitleAr(titleAr)) {
+            duplicatedTitles.add("titleAr");
+        }
+        return duplicatedTitles;
+    }
     public Post create(Post post) {
-
+        List<String> duplicatedTitles = checkDuplication(post.getTitleEn(), post.getTitleAr());
+        if(!duplicatedTitles.isEmpty()) {
+            throw new EntityAlreadyExistsException(duplicatedTitles);
+        }
         return postsRepository.save(post);
     }
 

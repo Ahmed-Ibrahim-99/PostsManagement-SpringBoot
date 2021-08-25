@@ -24,12 +24,10 @@ public class Post {
     private Integer postId;
     @NotNull
     @NotEmpty
-    @Column(unique = true)
     @Size(min=1, max=20, message="title length is out of boundary")
     private String titleEn;
     @NotNull
     @NotEmpty
-    @Column(unique = true)
     @Size(min=1, max=20, message="title length is out of boundary")
     private String titleAr;
     @NotNull

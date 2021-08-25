@@ -4,12 +4,10 @@ import java.util.Objects;
 
 public class ApiValidationError extends ApiSubError{
     private String field;
-    private Object rejectedValue;
     private String message;
 
-    public ApiValidationError(String field, Object rejectedValue, String message) {
+    public ApiValidationError(String field, String message) {
         this.field = field;
-        this.rejectedValue = rejectedValue;
         this.message = message;
     }
 
@@ -22,12 +20,12 @@ public class ApiValidationError extends ApiSubError{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ApiValidationError that = (ApiValidationError) o;
-        return Objects.equals(field, that.field) && Objects.equals(rejectedValue, that.rejectedValue) && Objects.equals(message, that.message);
+        return Objects.equals(field, that.field) && Objects.equals(message, that.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(field, rejectedValue, message);
+        return Objects.hash(field, message);
     }
 
     public String getField() {
@@ -36,14 +34,6 @@ public class ApiValidationError extends ApiSubError{
 
     public void setField(String field) {
         this.field = field;
-    }
-
-    public Object getRejectedValue() {
-        return rejectedValue;
-    }
-
-    public void setRejectedValue(Object rejectedValue) {
-        this.rejectedValue = rejectedValue;
     }
 
     public String getMessage() {

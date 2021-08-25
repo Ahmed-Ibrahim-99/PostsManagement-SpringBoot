@@ -6,9 +6,12 @@ import com.example.postsmanagement.exception.EntityNotFoundException;
 import com.example.postsmanagement.exception.ConstraintValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 
 @ControllerAdvice
@@ -30,7 +33,8 @@ public class GlobalAdvice {
     public ResponseEntity<Object> handleEntityAlreadyExists(EntityAlreadyExistsException ex, WebRequest request) {
         ApiError apiError = new ApiError();
         apiError.setMessage(ex.getMessage());
-//        apiError.addValidationErrors(ex.getRejectedParams());
+        apiError.addDuplicatedFields(ex.getDuplicatedFields());
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
+
 }

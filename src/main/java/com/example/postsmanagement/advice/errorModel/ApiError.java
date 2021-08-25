@@ -43,8 +43,8 @@ public class ApiError {
         subErrors.add(subError);
     }
 
-    private void addValidationError(String field, Object rejectedValue, String message) {
-        addSubError(new ApiValidationError(field, rejectedValue, message));
+    private void addValidationError(String field, String message) {
+        addSubError(new ApiValidationError(field, message));
     }
 
     private void addValidationError(String message) {
@@ -54,7 +54,13 @@ public class ApiError {
     public void addValidationErrors(List<ObjectError> errors) {
         errors.forEach(error -> {
             FieldError fieldError = (FieldError) error;
-            addValidationError(fieldError.getField(), fieldError.getRejectedValue(), fieldError.getDefaultMessage());
+            addValidationError(fieldError.getField(), fieldError.getDefaultMessage());
+        });
+    }
+
+    public void addDuplicatedFields(List<String> duplicatedFields) {
+        duplicatedFields.forEach(field -> {
+            addValidationError(field, field + " shouldn't be duplicated");
         });
     }
 

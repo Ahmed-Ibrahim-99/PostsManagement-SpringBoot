@@ -8,7 +8,7 @@ public class ConstraintValidationException extends RuntimeException{
     private List<ObjectError> errors;
 
     public ConstraintValidationException(List<ObjectError> errors) {
-        super("Constraint Validation Error");
+        super("Constraint Violation");
         this.errors = errors;
     }
 
