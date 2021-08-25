@@ -75,6 +75,44 @@ public class PostsServiceImpl implements PostsService {
         throw new EntityNotFoundException(Post.class, "postId", Integer.toString(postId));
     }
 
+    private Post replaceNonNull(Post post, PostDto dto) {
+
+        if(dto.getTitleEn() != null) {
+            post.setTitleEn(dto.getTitleEn());
+        }
+        if(dto.getTitleAr() != null) {
+            post.setTitleAr(dto.getTitleAr());
+        }
+        if(dto.getBodyEn() != null) {
+            post.setBodyEn(dto.getBodyEn());
+        }
+        if(dto.getBodyAr() != null) {
+            post.setBodyAr(dto.getBodyAr());
+        }
+        if(dto.getImageUrl() != null) {
+            post.setImageUrl(dto.getImageUrl());
+        }
+        if(dto.getUrl() != null) {
+            post.setUrl(dto.getUrl());
+        }
+        if(dto.getInterestId() != null) {
+            post.setInterestId(dto.getInterestId());
+        }
+
+        return post;
+    }
+
+    private List<String> getTitleValuesToCompare(List<String> postTitles, List<String> dtoTitles) {
+        List<String> titleValuesToCompare = dtoTitles;
+        if(dtoTitles.get(0) != null && dtoTitles.get(0).equals(postTitles.get(0))) {
+            titleValuesToCompare.set(0, null);
+        }
+        if(dtoTitles.get(1) != null && dtoTitles.get(1).equals(postTitles.get(1))) {
+            titleValuesToCompare.set(1, null);
+        }
+        return titleValuesToCompare;
+    }
+
     public void update(Integer postId, PostDto dto) {
         Post post = postsRepository.findFirstByPostId(postId);
 
@@ -82,36 +120,16 @@ public class PostsServiceImpl implements PostsService {
             throw new EntityNotFoundException(Post.class, "postId", Integer.toString(postId));
         }
 
-        String titleEn = dto.getTitleEn();
-        String titleAr = dto.getTitleAr();
-        String bodyEn = dto.getBodyEn();
-        String bodyAr = dto.getBodyAr();
-        String imageUrl = dto.getImageUrl();
-        String url = dto.getUrl();
-        Integer interestId = dto.getInterestId();
+        List<String> postTitles = new ArrayList<String>(){{add(post.getTitleEn()); add(post.getTitleAr());}};
+        List<String> dtoTitles = new ArrayList<String>(){{add(dto.getTitleEn()); add(dto.getTitleAr());}};
 
-        if(titleEn != null) {
-            post.setTitleEn(titleEn);
-        }
-        if(titleAr != null) {
-            post.setTitleAr(titleAr);
-        }
-        if(bodyEn != null) {
-            post.setBodyEn(bodyEn);
-        }
-        if(bodyAr != null) {
-            post.setBodyAr(bodyAr);
-        }
-        if(imageUrl != null) {
-            post.setImageUrl(imageUrl);
-        }
-        if(url != null) {
-            post.setUrl(url);
-        }
-        if(interestId != null) {
-            post.setInterestId(interestId);
-        }
+        List<String> titlesToCompare = getTitleValuesToCompare(postTitles, dtoTitles);
 
+        List<String> duplicatedTitles = checkDuplication(titlesToCompare.get(0), titlesToCompare.get(1));
+
+        if(!duplicatedTitles.isEmpty()) {
+            throw new EntityAlreadyExistsException(duplicatedTitles);
+        }
         postsRepository.save(post);
     }
 }
