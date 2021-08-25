@@ -44,11 +44,10 @@ public class PostsServiceImpl implements PostsService {
     }
 
     public void delete(Integer postId) {
-        if(postsRepository.existsByPostId(postId)) {
-            postsRepository.deleteByPostId(postId);
-            return;
+        if(!postsRepository.existsByPostId(postId)) {
+            throw new EntityNotFoundException();
         }
-        throw new EntityNotFoundException(Post.class, "postId", Integer.toString(postId));
+        postsRepository.deleteByPostId(postId);
     }
 
     public List<Post> readAll(Integer pageNumber, Integer pageLimit) {
@@ -69,10 +68,10 @@ public class PostsServiceImpl implements PostsService {
 
     public Post readById(Integer postId) {
         Post post = postsRepository.findFirstByPostId(postId);
-        if (post != null) {
-            return post;
+        if (post == null) {
+            throw new EntityNotFoundException();
         }
-        throw new EntityNotFoundException(Post.class, "postId", Integer.toString(postId));
+        return post;
     }
 
     private Post replaceNonNull(Post post, PostDto dto) {
@@ -117,7 +116,7 @@ public class PostsServiceImpl implements PostsService {
         Post post = postsRepository.findFirstByPostId(postId);
 
         if(post == null) {
-            throw new EntityNotFoundException(Post.class, "postId", Integer.toString(postId));
+            throw new EntityNotFoundException();
         }
 
         List<String> postTitles = new ArrayList<String>(){{add(post.getTitleEn()); add(post.getTitleAr());}};
@@ -130,6 +129,9 @@ public class PostsServiceImpl implements PostsService {
         if(!duplicatedTitles.isEmpty()) {
             throw new EntityAlreadyExistsException(duplicatedTitles);
         }
-        postsRepository.save(post);
+
+        Post updatedPost = replaceNonNull(post, dto);
+
+        postsRepository.save(updatedPost);
     }
 }
