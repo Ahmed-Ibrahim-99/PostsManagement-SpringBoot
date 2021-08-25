@@ -1,5 +1,6 @@
 package com.example.postsmanagement.service;
 
+import com.example.postsmanagement.controller.responseModel.PaginationResponse;
 import com.example.postsmanagement.exception.EntityAlreadyExistsException;
 import com.example.postsmanagement.exception.EntityNotFoundException;
 import com.example.postsmanagement.model.Post;
@@ -35,7 +36,8 @@ public class PostsServiceImpl implements PostsService {
         }
         return duplicatedTitles;
     }
-    public Post create(Post post) {
+    
+    public Post addNewPost(Post post) {
         List<String> duplicatedTitles = checkDuplication(post.getTitleEn(), post.getTitleAr());
         if(!duplicatedTitles.isEmpty()) {
             throw new EntityAlreadyExistsException(duplicatedTitles);
@@ -43,30 +45,28 @@ public class PostsServiceImpl implements PostsService {
         return postsRepository.save(post);
     }
 
-    public void delete(Integer postId) {
+    public void deletePost(Integer postId) {
         if(!postsRepository.existsByPostId(postId)) {
             throw new EntityNotFoundException();
         }
         postsRepository.deleteByPostId(postId);
     }
 
-    public List<Post> readAll(Integer pageNumber, Integer pageLimit) {
+    public PaginationResponse<Post> getPage(Integer pageNumber, Integer pageLimit) {
         Pageable paging = PageRequest.of(pageNumber, pageLimit);
         Page<Post> pagedPosts = postsRepository.findAll(paging);
+        List<Post> posts;
         if(pagedPosts.hasContent()) {
-            return pagedPosts.getContent();
+            posts = pagedPosts.getContent();
         }
         else {
-            return new ArrayList<Post>();
+            posts = new ArrayList<Post>();
         }
+        boolean nextPage = pagedPosts.getTotalElements()/ pageLimit - 1 > pageNumber;
+        return new PaginationResponse<Post>(pagedPosts.getTotalElements(),nextPage,posts);
     }
 
-    public Long countAll() {
-        // used to return number of entities in Get Request with Pagination
-        return postsRepository.count();
-    }
-
-    public Post readById(Integer postId) {
+    public Post getPost(Integer postId) {
         Post post = postsRepository.findFirstByPostId(postId);
         if (post == null) {
             throw new EntityNotFoundException();
@@ -112,7 +112,7 @@ public class PostsServiceImpl implements PostsService {
         return titleValuesToCompare;
     }
 
-    public void update(Integer postId, PostDto dto) {
+    public void updatePost(Integer postId, PostDto dto) {
         Post post = postsRepository.findFirstByPostId(postId);
 
         if(post == null) {

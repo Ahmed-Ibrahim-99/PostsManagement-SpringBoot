@@ -64,6 +64,12 @@ public class ApiError {
         });
     }
 
+    public void addInvalidRequestParams(List<String> invalidParams) {
+        invalidParams.forEach(param -> {
+            addValidationError(param, param + "'s value is invalid");
+        });
+    }
+
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
@@ -79,4 +85,5 @@ public class ApiError {
     public void setMessage(String message) {
         this.message = message;
     }
+
 }

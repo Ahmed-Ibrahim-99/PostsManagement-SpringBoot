@@ -3,6 +3,7 @@ package com.example.postsmanagement.controller;
 import com.example.postsmanagement.advice.errorModel.ApiError;
 import com.example.postsmanagement.controller.responseModel.PaginationResponse;
 import com.example.postsmanagement.exception.ConstraintValidationException;
+import com.example.postsmanagement.exception.InvalidRequestParameterException;
 import com.example.postsmanagement.model.Post;
 import com.example.postsmanagement.model.dto.PostDto;
 import com.example.postsmanagement.repo.PostsRepository;
@@ -26,29 +27,37 @@ public class PostsController {
         this.postService = postService;
     }
 
+    private List<String> checkRequestParams(int pageNumber, int pageLimit) {
+        List<String> invalidParams = new ArrayList<>();
+        if(pageNumber < 0) {
+            invalidParams.add("pageNumber");
+        }
+        if(pageLimit < 1) {
+            invalidParams.add("pageLimit");
+        }
+        return invalidParams;
+    }
     @GetMapping("/posts")
-    private ResponseEntity<PaginationResponse<Post>> GetAllPosts(
+    private ResponseEntity<PaginationResponse<Post>> GetPosts(
             @RequestParam(defaultValue = "1") Integer pageNumber,
             @RequestParam(defaultValue = "5") Integer pageLimit)
     {
-        if(pageNumber < 0) {
-            throw new IllegalArgumentException("pageNumber cannot be less than 0");
+
+        List<String> invalidParams = checkRequestParams(pageNumber, pageLimit);
+        if(!invalidParams.isEmpty()) {
+            throw new InvalidRequestParameterException(invalidParams);
         }
-        if(pageLimit < 1) {
-            throw new IllegalArgumentException("pageLimit cannot be less than 1");
-        }
+
         Integer currentPageNumber = pageNumber > 0 ? pageNumber-1 : 0;
         Integer currentPageLimit = pageNumber > 0 ? pageLimit : Integer.MAX_VALUE;
-        List<Post> posts = postService.readAll(currentPageNumber, currentPageLimit);
-        Long entitiesCount = postService.countAll();
-        boolean nextPage = entitiesCount/currentPageLimit - 1 > currentPageNumber;
-        PaginationResponse<Post> paginationResponse = new PaginationResponse<Post>(entitiesCount,nextPage,posts);
-        return new ResponseEntity<>(paginationResponse, new HttpHeaders(), HttpStatus.OK);
+
+        PaginationResponse<Post> paginationResponse = postService.getPage(currentPageNumber, currentPageLimit);
+        return new ResponseEntity<>(paginationResponse, HttpStatus.OK);
     }
 
     @GetMapping("/posts/{postId}")
     private Post GetPostById(@PathVariable Integer postId) {
-        return postService.readById(postId);
+        return postService.getPost(postId);
     }
 
     @PostMapping("/posts")
@@ -57,16 +66,16 @@ public class PostsController {
             List<ObjectError> errors = bindingResult.getAllErrors();
             throw new ConstraintValidationException(errors);
         }
-        return postService.create(post);
+        return postService.addNewPost(post);
     }
 
     @DeleteMapping("/posts/{postId}")
     private void DeletePost(@PathVariable Integer postId) {
-        postService.delete(postId);
+        postService.deletePost(postId);
     }
 
     @PatchMapping("/posts/{postId}")
     private void UpdatePost(@PathVariable Integer postId, @RequestBody PostDto dto) {
-        postService.update(postId, dto);
+        postService.updatePost(postId, dto);
     }
 }
