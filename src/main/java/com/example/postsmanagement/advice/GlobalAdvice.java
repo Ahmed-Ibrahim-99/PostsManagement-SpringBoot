@@ -15,15 +15,22 @@ import javax.validation.ConstraintViolationException;
 public class GlobalAdvice {
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<Object> handleConstraintViolationException (ConstraintViolationException  ex, WebRequest request) {
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        ApiError apiError = new ApiError();
         apiError.setMessage("Constraint Validation Error");
         apiError.addValidationErrors(ex.getConstraintViolations());
-        return new ResponseEntity<>(apiError, apiError.getStatus());
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler({EntityAlreadyExistsException.class, EntityNotFoundException.class, IllegalArgumentException.class})
+    @ExceptionHandler({EntityNotFoundException.class, IllegalArgumentException.class})
     public ResponseEntity<Object> handleInvalidInput(Exception ex, WebRequest request) {
-        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        ApiError apiError = new ApiError();
         apiError.setMessage(ex.getMessage());
-        return new ResponseEntity<>(apiError, apiError.getStatus());
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler({EntityAlreadyExistsException.class})
+    public ResponseEntity<Object> handleEntityAlreadyExists(EntityAlreadyExistsException ex, WebRequest request) {
+        ApiError apiError = new ApiError();
+        apiError.setMessage(ex.getMessage());
+        apiError.addValidationErrors(ex.getRejectedParams());
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
     }
 }

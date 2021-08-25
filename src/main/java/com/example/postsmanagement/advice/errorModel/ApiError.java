@@ -13,6 +13,7 @@ import javax.validation.ConstraintViolation;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -21,48 +22,37 @@ import java.util.Set;
 public class ApiError {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy hh:mm:ss")
     private LocalDateTime timestamp;
-    private HttpStatus status;
     private String message;
-    private String debugMessage;
     private List<ApiSubError> subErrors = new ArrayList<>();
 
-    private ApiError() {
+    public ApiError() {
         timestamp = LocalDateTime.now();
     }
 
-    public ApiError(HttpStatus status) {
+    public ApiError(Throwable ex) {
         this();
-        this.status = status;
-    }
-
-    public ApiError(HttpStatus status, Throwable ex) {
-        this(status);
         this.message = "Unexpected error";
-        this.debugMessage = ex.getLocalizedMessage();
     }
 
-    public ApiError(HttpStatus status, String message, Throwable ex) {
+    public ApiError(String message, Throwable ex) {
         this();
-        this.status = status;
         this.message = message;
-        this.debugMessage = ex.getLocalizedMessage();
     }
 
     private void addSubError(ApiSubError subError) {
         subErrors.add(subError);
     }
 
-    private void addValidationError(String object, String field, Object rejectedValue, String message) {
-        addSubError(new ApiValidationError(object, field, rejectedValue, message));
+    private void addValidationError(String field, Object rejectedValue, String message) {
+        addSubError(new ApiValidationError(field, rejectedValue, message));
     }
 
-    private void addValidationError(String object, String message) {
-        addSubError(new ApiValidationError(object, message));
+    private void addValidationError(String message) {
+        addSubError(new ApiValidationError(message));
     }
 
     private void addValidationError(FieldError fieldError) {
         this.addValidationError(
-                fieldError.getObjectName(),
                 fieldError.getField(),
                 fieldError.getRejectedValue(),
                 fieldError.getDefaultMessage());
@@ -74,7 +64,6 @@ public class ApiError {
 
     private void addValidationError(ObjectError objectError) {
         this.addValidationError(
-                objectError.getObjectName(),
                 objectError.getDefaultMessage());
     }
 
@@ -85,7 +74,6 @@ public class ApiError {
     private void addValidationError(ConstraintViolation<?> cv) {
         //object, field, rejectedValue, message
         this.addValidationError(
-                cv.getRootBeanClass().getSimpleName(),
                 ((PathImpl) cv.getPropertyPath()).getLeafNode().asString(),
                 cv.getInvalidValue(),
                 cv.getMessage());
@@ -93,6 +81,17 @@ public class ApiError {
 
     public void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
         constraintViolations.forEach(this::addValidationError);
+    }
+
+    private void addValidationError(String rejectedTitle, String rejectedValue) {
+        this.addValidationError(rejectedTitle, rejectedValue, rejectedTitle + " shouldn't be duplicated");
+    }
+
+    public void addValidationErrors(Map<String, String> rejectedParams) {
+        for (Map.Entry<String,String> entry : rejectedParams.entrySet())
+        {
+            this.addValidationError(entry.getKey(), entry.getValue());
+        }
     }
 
     public LocalDateTime getTimestamp() {
@@ -103,28 +102,12 @@ public class ApiError {
         this.timestamp = timestamp;
     }
 
-    public HttpStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(HttpStatus status) {
-        this.status = status;
-    }
-
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getDebugMessage() {
-        return debugMessage;
-    }
-
-    public void setDebugMessage(String debugMessage) {
-        this.debugMessage = debugMessage;
     }
 
     public List<ApiSubError> getSubErrors() {
