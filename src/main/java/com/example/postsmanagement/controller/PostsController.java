@@ -65,7 +65,11 @@ public class PostsController {
     }
 
     @PatchMapping("/posts/{postId}")
-    private ResponseEntity<Object> UpdatePost(@PathVariable Integer postId, @RequestBody PostDto newPost) {
+    private ResponseEntity<Object> UpdatePost(@PathVariable Integer postId, @RequestBody @Valid PostDto newPost, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            throw new ConstraintValidationException(errors);
+        }
         postService.updatePost(postId, newPost);
         PostDto updatedPostFormatted = PostUtils.mapToDto(postService.getPost(postId));
         PostsResponse updateResponse = new PostsUpdateResponse(updatedPostFormatted);

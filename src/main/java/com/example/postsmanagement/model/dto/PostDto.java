@@ -1,9 +1,15 @@
 package com.example.postsmanagement.model.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class PostDto {
+    @NotNull
+    @NotEmpty
     private String englishTitle;
+    @NotNull
+    @NotEmpty
     private String arabicTitle;
     private String englishParagraph;
     private String arabicParagraph;
