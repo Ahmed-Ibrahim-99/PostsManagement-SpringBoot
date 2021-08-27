@@ -1,21 +1,18 @@
 package com.example.postsmanagement.controller;
 
-import com.example.postsmanagement.advice.errorModel.ApiError;
-import com.example.postsmanagement.controller.responseModel.PaginationResponse;
+import com.example.postsmanagement.model.responseModel.*;
 import com.example.postsmanagement.exception.ConstraintValidationException;
 import com.example.postsmanagement.exception.InvalidRequestParameterException;
 import com.example.postsmanagement.model.Post;
 import com.example.postsmanagement.model.dto.PostDto;
-import com.example.postsmanagement.repo.PostsRepository;
+import com.example.postsmanagement.model.utils.PostUtils;
 import com.example.postsmanagement.service.PostsService;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +35,7 @@ public class PostsController {
         return invalidParams;
     }
     @GetMapping("/posts")
-    private ResponseEntity<PaginationResponse<Post>> GetPosts(
+    private ResponseEntity<Object> GetPosts(
             @RequestParam(defaultValue = "1") Integer pageNumber,
             @RequestParam(defaultValue = "5") Integer pageLimit)
     {
@@ -51,31 +48,41 @@ public class PostsController {
         Integer currentPageNumber = pageNumber > 0 ? pageNumber-1 : 0;
         Integer currentPageLimit = pageNumber > 0 ? pageLimit : Integer.MAX_VALUE;
 
-        PaginationResponse<Post> paginationResponse = postService.getPage(currentPageNumber, currentPageLimit);
-        return new ResponseEntity<>(paginationResponse, HttpStatus.OK);
+        PostsResponse postsPaginationResponse = postService.getPage(currentPageNumber, currentPageLimit);
+        return new ResponseEntity<>(postsPaginationResponse, HttpStatus.OK);
     }
 
     @GetMapping("/posts/{postId}")
-    private Post GetPostById(@PathVariable Integer postId) {
-        return postService.getPost(postId);
+    private ResponseEntity<Object> GetPostById(@PathVariable Integer postId) {
+        Post requiredPost = postService.getPost(postId);
+        PostDto responseDto = PostUtils.mapToDto(requiredPost);
+        PostsGetResponse getResponse = new PostsGetResponse(responseDto);
+        return new ResponseEntity<>(getResponse, HttpStatus.OK);
     }
 
     @PostMapping("/posts")
-    private Post CreatePost(@RequestBody @Valid Post post, BindingResult bindingResult) {
+    private ResponseEntity<Object> CreatePost(@RequestBody @Valid Post post, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             throw new ConstraintValidationException(errors);
         }
-        return postService.addNewPost(post);
+        Post createdPost = postService.addNewPost(post);
+        PostDto responseDto = PostUtils.mapToDto(createdPost);
+        PostsResponse createResponse = new PostsCreateResponse(post.getPostId(), responseDto);
+        return new ResponseEntity<>(createResponse, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/posts/{postId}")
-    private void DeletePost(@PathVariable Integer postId) {
+    private ResponseEntity<Object> DeletePost(@PathVariable Integer postId) {
         postService.deletePost(postId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PatchMapping("/posts/{postId}")
-    private void UpdatePost(@PathVariable Integer postId, @RequestBody PostDto dto) {
+    private ResponseEntity<Object> UpdatePost(@PathVariable Integer postId, @RequestBody PostDto dto) {
         postService.updatePost(postId, dto);
+        PostDto responseDto = PostUtils.mapToDto(postService.getPost(postId));
+        PostsResponse updateResponse = new PostsUpdateResponse(responseDto);
+        return new ResponseEntity<>(updateResponse, HttpStatus.OK);
     }
 }

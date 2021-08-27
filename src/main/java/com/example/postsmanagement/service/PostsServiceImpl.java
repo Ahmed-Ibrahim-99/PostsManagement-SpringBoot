@@ -1,6 +1,6 @@
 package com.example.postsmanagement.service;
 
-import com.example.postsmanagement.controller.responseModel.PaginationResponse;
+import com.example.postsmanagement.model.responseModel.PostsPaginationResponse;
 import com.example.postsmanagement.exception.EntityAlreadyExistsException;
 import com.example.postsmanagement.exception.EntityNotFoundException;
 import com.example.postsmanagement.model.Post;
@@ -42,7 +42,7 @@ public class PostsServiceImpl implements PostsService {
         postsRepository.deleteByPostId(postId);
     }
 
-    public PaginationResponse<Post> getPage(Integer pageNumber, Integer pageLimit) {
+    public PostsPaginationResponse<Post> getPage(Integer pageNumber, Integer pageLimit) {
         Pageable paging = PageRequest.of(pageNumber, pageLimit);
         Page<Post> pagedPosts = postsRepository.findAll(paging);
         List<Post> posts;
@@ -53,7 +53,7 @@ public class PostsServiceImpl implements PostsService {
             posts = new ArrayList<Post>();
         }
         boolean nextPage = pagedPosts.getTotalElements()/ pageLimit - 1 > pageNumber;
-        return new PaginationResponse<Post>(pagedPosts.getTotalElements(),nextPage,posts);
+        return new PostsPaginationResponse<Post>(pagedPosts.getTotalElements(),nextPage,posts);
     }
 
     public Post getPost(Integer postId) {

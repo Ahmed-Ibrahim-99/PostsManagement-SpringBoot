@@ -38,56 +38,28 @@ public class PostDto {
         return titleEn;
     }
 
-    public void setTitleEn(String titleEn) {
-        this.titleEn = titleEn;
-    }
-
     public String getTitleAr() {
         return titleAr;
-    }
-
-    public void setTitleAr(String titleAr) {
-        this.titleAr = titleAr;
     }
 
     public String getBodyEn() {
         return bodyEn;
     }
 
-    public void setBodyEn(String bodyEn) {
-        this.bodyEn = bodyEn;
-    }
-
     public String getBodyAr() {
         return bodyAr;
-    }
-
-    public void setBodyAr(String bodyAr) {
-        this.bodyAr = bodyAr;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public Integer getInterestId() {
         return interestId;
-    }
-
-    public void setInterestId(Integer interestId) {
-        this.interestId = interestId;
     }
 
     @Override
