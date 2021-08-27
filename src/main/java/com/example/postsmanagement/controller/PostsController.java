@@ -1,5 +1,6 @@
 package com.example.postsmanagement.controller;
 
+import com.example.postsmanagement.controller.utils.PostsControllerUtils;
 import com.example.postsmanagement.model.responseModel.*;
 import com.example.postsmanagement.exception.ConstraintValidationException;
 import com.example.postsmanagement.exception.InvalidRequestParameterException;
@@ -24,51 +25,36 @@ public class PostsController {
         this.postService = postService;
     }
 
-    private List<String> checkRequestParams(int pageNumber, int pageLimit) {
-        List<String> invalidParams = new ArrayList<>();
-        if(pageNumber < 0) {
-            invalidParams.add("pageNumber");
-        }
-        if(pageLimit < 1) {
-            invalidParams.add("pageLimit");
-        }
-        return invalidParams;
-    }
     @GetMapping("/posts")
     private ResponseEntity<Object> GetPosts(
             @RequestParam(defaultValue = "1") Integer pageNumber,
             @RequestParam(defaultValue = "5") Integer pageLimit)
     {
-
-        List<String> invalidParams = checkRequestParams(pageNumber, pageLimit);
+        List<String> invalidParams = PostsControllerUtils.checkRequestParams(pageNumber, pageLimit);
         if(!invalidParams.isEmpty()) {
             throw new InvalidRequestParameterException(invalidParams);
         }
-
-        Integer currentPageNumber = pageNumber > 0 ? pageNumber-1 : 0;
-        Integer currentPageLimit = pageNumber > 0 ? pageLimit : Integer.MAX_VALUE;
-
-        PostsResponse postsPaginationResponse = postService.getPage(currentPageNumber, currentPageLimit);
+        PostsResponse postsPaginationResponse = postService.getPage(pageNumber, pageLimit);
         return new ResponseEntity<>(postsPaginationResponse, HttpStatus.OK);
     }
 
     @GetMapping("/posts/{postId}")
     private ResponseEntity<Object> GetPostById(@PathVariable Integer postId) {
         Post requiredPost = postService.getPost(postId);
-        PostDto responseDto = PostUtils.mapToDto(requiredPost);
-        PostsGetResponse getResponse = new PostsGetResponse(responseDto);
+        PostDto requiredPostFormatted = PostUtils.mapToDto(requiredPost);
+        PostsGetResponse getResponse = new PostsGetResponse(requiredPostFormatted);
         return new ResponseEntity<>(getResponse, HttpStatus.OK);
     }
 
     @PostMapping("/posts")
-    private ResponseEntity<Object> CreatePost(@RequestBody @Valid Post post, BindingResult bindingResult) {
+    private ResponseEntity<Object> CreatePost(@RequestBody @Valid Post newPost, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             throw new ConstraintValidationException(errors);
         }
-        Post createdPost = postService.addNewPost(post);
-        PostDto responseDto = PostUtils.mapToDto(createdPost);
-        PostsResponse createResponse = new PostsCreateResponse(post.getPostId(), responseDto);
+        Post createdPost = postService.addNewPost(newPost);
+        PostDto createdPostFormatted = PostUtils.mapToDto(createdPost);
+        PostsResponse createResponse = new PostsCreateResponse(newPost.getPostId(), createdPostFormatted);
         return new ResponseEntity<>(createResponse, HttpStatus.CREATED);
     }
 
@@ -79,10 +65,10 @@ public class PostsController {
     }
 
     @PatchMapping("/posts/{postId}")
-    private ResponseEntity<Object> UpdatePost(@PathVariable Integer postId, @RequestBody PostDto dto) {
-        postService.updatePost(postId, dto);
-        PostDto responseDto = PostUtils.mapToDto(postService.getPost(postId));
-        PostsResponse updateResponse = new PostsUpdateResponse(responseDto);
+    private ResponseEntity<Object> UpdatePost(@PathVariable Integer postId, @RequestBody PostDto newPost) {
+        postService.updatePost(postId, newPost);
+        PostDto updatedPostFormatted = PostUtils.mapToDto(postService.getPost(postId));
+        PostsResponse updateResponse = new PostsUpdateResponse(updatedPostFormatted);
         return new ResponseEntity<>(updateResponse, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.postsmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -25,17 +26,21 @@ public class Post {
     @NotNull
     @NotEmpty
     @Size(min=1, max=20, message="title length is out of boundary")
+    @JsonProperty("englishTitle")
     private String titleEn;
     @NotNull
     @NotEmpty
     @Size(min=1, max=20, message="title length is out of boundary")
+    @JsonProperty("arabicTitle")
     private String titleAr;
     @NotNull
     @NotEmpty
+    @JsonProperty("englishParagraph")
     @Size(min=1, max=300, message="body length is out of boundary")
     private String bodyEn;
     @NotNull
     @NotEmpty
+    @JsonProperty("arabicParagraph")
     @Size(min=1, max=300, message="body length is out of boundary")
     private String bodyAr;
     @CreatedDate
@@ -44,10 +49,13 @@ public class Post {
     private LocalDateTime modifiedAt;
     @NotNull
     @NotEmpty
+    @JsonProperty("imageLink")
     private String imageUrl;
     @NotNull
     @NotEmpty
+    @JsonProperty("postLink")
     private String url;
+    @JsonProperty("postType")
     private Integer interestId;
 
     public void setPostId(Integer id) {

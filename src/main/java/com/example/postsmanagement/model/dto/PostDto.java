@@ -1,65 +1,52 @@
 package com.example.postsmanagement.model.dto;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-// To be used in update request
 public class PostDto {
-    // Removed some members from Post:
-    // postId, createdAt, modifiedAt
-    private String titleEn;
-    private String titleAr;
-    private String bodyEn;
-    private String bodyAr;
-    private String imageUrl;
-    private String url;
-    private Integer interestId;
+    private String englishTitle;
+    private String arabicTitle;
+    private String englishParagraph;
+    private String arabicParagraph;
+    private String imageLink;
+    private String postLink;
+    private Integer postType;
 
-    public PostDto(String titleEn, String titleAr, String bodyEn, String bodyAr, String imageUrl, String url, Integer interestId) {
-        this.titleEn = titleEn;
-        this.titleAr = titleAr;
-        this.bodyEn = bodyEn;
-        this.bodyAr = bodyAr;
-        this.imageUrl = imageUrl;
-        this.url = url;
-        this.interestId = interestId;
+    public PostDto(String englishTitle, String arabicTitle, String englishParagraph, String arabicParagraph, String imageLink, String postLink, Integer postType) {
+        this.englishTitle = englishTitle;
+        this.arabicTitle = arabicTitle;
+        this.englishParagraph = englishParagraph;
+        this.arabicParagraph = arabicParagraph;
+        this.imageLink = imageLink;
+        this.postLink = postLink;
+        this.postType = postType;
     }
 
-    public String getTitleEn() {
-        return titleEn;
+    public String getEnglishTitle() {
+        return englishTitle;
     }
 
-    public String getTitleAr() {
-        return titleAr;
+    public String getArabicTitle() {
+        return arabicTitle;
     }
 
-    public String getBodyEn() {
-        return bodyEn;
+    public String getEnglishParagraph() {
+        return englishParagraph;
     }
 
-    public String getBodyAr() {
-        return bodyAr;
+    public String getArabicParagraph() {
+        return arabicParagraph;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageLink() {
+        return imageLink;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPostLink() {
+        return postLink;
     }
 
-    public Integer getInterestId() {
-        return interestId;
+    public Integer getPostType() {
+        return postType;
     }
 
     @Override
@@ -67,11 +54,11 @@ public class PostDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PostDto postDto = (PostDto) o;
-        return Objects.equals(titleEn, postDto.titleEn) && Objects.equals(titleAr, postDto.titleAr) && Objects.equals(bodyEn, postDto.bodyEn) && Objects.equals(bodyAr, postDto.bodyAr) && Objects.equals(imageUrl, postDto.imageUrl) && Objects.equals(url, postDto.url) && Objects.equals(interestId, postDto.interestId);
+        return Objects.equals(englishTitle, postDto.englishTitle) && Objects.equals(arabicTitle, postDto.arabicTitle) && Objects.equals(englishParagraph, postDto.englishParagraph) && Objects.equals(arabicParagraph, postDto.arabicParagraph) && Objects.equals(imageLink, postDto.imageLink) && Objects.equals(postLink, postDto.postLink) && Objects.equals(postType, postDto.postType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titleEn, titleAr, bodyEn, bodyAr, imageUrl, url, interestId);
+        return Objects.hash(englishTitle, arabicTitle, englishParagraph, arabicParagraph, imageLink, postLink, postType);
     }
 }
