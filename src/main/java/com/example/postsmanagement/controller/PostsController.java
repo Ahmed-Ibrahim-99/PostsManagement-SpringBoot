@@ -26,7 +26,7 @@ public class PostsController {
     }
 
     @GetMapping("/posts")
-    private ResponseEntity<Object> GetPosts(
+    private ResponseEntity<Object> GetPage(
             @RequestParam(defaultValue = "1") Integer pageNumber,
             @RequestParam(defaultValue = "5") Integer pageLimit)
     {
@@ -39,7 +39,7 @@ public class PostsController {
     }
 
     @GetMapping("/posts/{postId}")
-    private ResponseEntity<Object> GetPostById(@PathVariable Integer postId) {
+    private ResponseEntity<Object> GetPost(@PathVariable Integer postId) {
         Post requiredPost = postService.getPost(postId);
         PostDto requiredPostFormatted = PostUtils.mapToDto(requiredPost);
         PostsGetResponse getResponse = new PostsGetResponse(requiredPostFormatted);
@@ -47,7 +47,7 @@ public class PostsController {
     }
 
     @PostMapping("/posts")
-    private ResponseEntity<Object> CreatePost(@RequestBody @Valid Post newPost, BindingResult bindingResult) {
+    private ResponseEntity<Object> AddNewPost(@RequestBody @Valid Post newPost, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             throw new ConstraintValidationException(errors);
