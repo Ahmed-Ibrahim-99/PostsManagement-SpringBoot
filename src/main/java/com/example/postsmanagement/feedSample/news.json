@@ -1,0 +1,258 @@
+{
+	"rss": {
+		"channel": {
+			"title": "NASA Breaking News",
+			"description": "A RSS news feed containing the latest NASA news articles and press releases.",
+			"link": [
+				"http://www.nasa.gov/",
+				{
+					"_rel": "self",
+					"_href": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+					"__prefix": "atom"
+				}
+			],
+			"language": "en-us",
+			"managingEditor": "jim.wilson@nasa.gov",
+			"webMaster": "brian.dunbar@nasa.gov",
+			"docs": "http://blogs.harvard.edu/tech/rss",
+			"item": [
+				{
+					"title": "NASA Administrator Statement on Meeting with Ukrainian President",
+					"link": "http://www.nasa.gov/press-release/nasa-administrator-statement-on-meeting-with-ukrainian-president",
+					"description": "The following is a statement from NASA Administrator Bill Nelson on Ukrainian President Volodymyr Zelenskyy’s visit Tuesday to NASA Headquarters in Washington:",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/51416138114_872802e414_k.jpeg?itok=MKJrk0FR",
+						"_length": "699133",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-administrator-statement-on-meeting-with-ukrainian-president"
+					},
+					"pubDate": "Tue, 31 Aug 2021 14:36 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473662"
+					}
+				},
+				{
+					"title": "NASA Leadership to Call Space Station Crew",
+					"link": "http://www.nasa.gov/press-release/nasa-leadership-to-call-space-station-crew",
+					"description": "NASA Administrator Bill Nelson and Deputy Administrator Pam Melroy will speak with astronauts aboard the International Space Station from the Mission Control Center at the agency’s Johnson Space Center in Houston Thursday, Sept. 2.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/44911459904_375bc02163_k_0.jpg?itok=zVIEAh87",
+						"_length": "1080546",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-leadership-to-call-space-station-crew"
+					},
+					"pubDate": "Tue, 31 Aug 2021 11:38 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473655"
+					}
+				},
+				{
+					"title": "NASA Sets Coverage for Two Russian Spacewalks Outside Space Station",
+					"link": "http://www.nasa.gov/press-release/nasa-sets-coverage-for-two-russian-spacewalks-outside-space-station",
+					"description": "Two Russian cosmonauts will venture outside the International Space Station Friday, Sept. 3, and Thursday, Sept. 9, to conduct the first pair of up to 11 spacewalks to prepare the new Nauka multipurpose laboratory module for operations in space.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/eva_image.jpg?itok=IyvTFPkG",
+						"_length": "799033",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-sets-coverage-for-two-russian-spacewalks-outside-space-station"
+					},
+					"pubDate": "Mon, 30 Aug 2021 15:57 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473631"
+					}
+				},
+				{
+					"title": "Cutting-Edge Science Launches on NASA’s SpaceX Cargo Resupply Mission",
+					"link": "http://www.nasa.gov/press-release/cutting-edge-science-launches-on-nasa-s-spacex-cargo-resupply-mission",
+					"description": "The latest SpaceX Dragon resupply spacecraft is bound for the International Space Station after launching at 3:14 a.m. EDT Sunday from from Launch Complex 39A at NASA’s Kennedy Space Center in Florida, carrying more than 4,800 pounds of science experiments, crew supplies, and spacecraft hardware.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/ksc-20210829-ph-kls01_0024_orig_1041x.jpeg?itok=eP2a19YF",
+						"_length": "830209",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/cutting-edge-science-launches-on-nasa-s-spacex-cargo-resupply-mission"
+					},
+					"pubDate": "Sun, 29 Aug 2021 03:11 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473601"
+					}
+				},
+				{
+					"title": "Media Invited to Virtual Briefing on Launch of NASA, USGS Landsat 9",
+					"link": "http://www.nasa.gov/press-release/media-invited-to-virtual-briefing-on-launch-of-nasa-usgs-landsat-9",
+					"description": "Officials from NASA and the U.S. Geological Survey (USGS) will discuss next month’s planned launch of the Landsat 9 satellite during a media briefing at 10 a.m. EDT Tuesday, Aug. 31.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/landsat9_still_sw2_print_0.jpg?itok=QuUU2eeE",
+						"_length": "122749",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/media-invited-to-virtual-briefing-on-launch-of-nasa-usgs-landsat-9"
+					},
+					"pubDate": "Fri, 27 Aug 2021 14:00 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473589"
+					}
+				},
+				{
+					"title": "NASA Awards Information Technology Support Services Contract",
+					"link": "http://www.nasa.gov/press-release/nasa-awards-information-technology-support-services-contract",
+					"description": "NASA has selected New Directions Technologies Inc. of Ridgecrest, California, for management systems engineering, software development, project management, information technology security, and enterprise architecture support services for the agency’s Kennedy Space Center, Johnson Space Center, and Ames Research Center.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa-logo-web-rgb_0.jpg?itok=mrBnB_c9",
+						"_length": "189751",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-awards-information-technology-support-services-contract"
+					},
+					"pubDate": "Wed, 25 Aug 2021 15:38 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473517"
+					}
+				},
+				{
+					"title": "Georgia, California Students to Hear from Astronauts on Space Station",
+					"link": "http://www.nasa.gov/press-release/georgia-california-students-to-hear-from-astronauts-on-space-station",
+					"description": "Students in Georgia and California will each have an opportunity this week to hear from astronauts aboard the International Space Station.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/iss065e081306_0.jpg?itok=DrwL2J5B",
+						"_length": "2319808",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/georgia-california-students-to-hear-from-astronauts-on-space-station"
+					},
+					"pubDate": "Wed, 25 Aug 2021 12:23 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473508"
+					}
+				},
+				{
+					"title": "NASA Sets Coverage, Invites Public to Virtually Join Next Cargo Launch",
+					"link": "http://www.nasa.gov/press-release/nasa-sets-coverage-invites-public-to-virtually-join-next-cargo-launch-0",
+					"description": "NASA commercial cargo provider SpaceX is targeting Saturday, Aug. 28, at 3:37 a.m. EDT to launch its 23rd commercial resupply services mission to the International Space Station.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/crs-22_0_0.jpg?itok=sq1FBB1W",
+						"_length": "145248",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-sets-coverage-invites-public-to-virtually-join-next-cargo-launch-0"
+					},
+					"pubDate": "Fri, 20 Aug 2021 15:05 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473417"
+					}
+				},
+				{
+					"title": "Update: NASA Spacewalk Briefing to Highlight New Solar Array Installation",
+					"link": "http://www.nasa.gov/press-release/update-nasa-spacewalk-briefing-to-highlight-new-solar-array-installation",
+					"description": "Two astronauts will venture outside the International Space Station Tuesday, Aug. 24, for a spacewalk to install a support bracket in preparation for future installation of the orbiting laboratory’s third new solar array.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/e65_eva77_solar_array_augmentation_plan_4a_irosa_1080.jpg?itok=V7rHvHMc",
+						"_length": "841984",
+						"_type": "image/jpeg"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/update-nasa-spacewalk-briefing-to-highlight-new-solar-array-installation"
+					},
+					"pubDate": "Wed, 18 Aug 2021 11:14 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473313"
+					}
+				},
+				{
+					"title": "NASA Seeks Student Tech Ideas for Suborbital Launch",
+					"link": "http://www.nasa.gov/press-release/nasa-seeks-student-tech-ideas-for-suborbital-launch",
+					"description": "NASA is calling on all sixth through 12th-grade educators and students to submit experiments for possible suborbital flights as a way of gaining firsthand experience with the design and testing process used by NASA researchers.",
+					"enclosure": {
+						"_url": "http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa_banner2_1041x320_0.png?itok=qZg7A8mg",
+						"_length": "294772",
+						"_type": "image/png"
+					},
+					"guid": {
+						"_isPermaLink": "false",
+						"__text": "http://www.nasa.gov/press-release/nasa-seeks-student-tech-ideas-for-suborbital-launch"
+					},
+					"pubDate": "Wed, 18 Aug 2021 10:19 EDT",
+					"source": {
+						"_url": "http://www.nasa.gov/rss/dyn/breaking_news.rss",
+						"__text": "NASA Breaking News"
+					},
+					"identifier": {
+						"__prefix": "dc",
+						"__text": "473311"
+					}
+				}
+			]
+		},
+		"_xmlns:atom": "http://www.w3.org/2005/Atom",
+		"_xmlns:dc": "http://purl.org/dc/elements/1.1/",
+		"_xmlns:itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
+		"_xmlns:media": "http://search.yahoo.com/mrss/",
+		"_version": "2.0",
+		"_xml:base": "http://www.nasa.gov/"
+	}
+}

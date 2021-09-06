@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?> <rss version="2.0" xml:base="http://www.nasa.gov/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/"> <channel> <title>NASA Breaking News</title>
+ <description>A RSS news feed containing the latest NASA news articles and press releases.</description>
+ <link>http://www.nasa.gov/</link>
+ <atom:link rel="self" href="http://www.nasa.gov/rss/dyn/breaking_news.rss" />
+ <language>en-us</language>
+ <managingEditor>jim.wilson@nasa.gov</managingEditor>
+ <webMaster>brian.dunbar@nasa.gov</webMaster>
+ <docs>http://blogs.harvard.edu/tech/rss</docs>
+ <item> <title>NASA Administrator Statement on Meeting with Ukrainian President</title>
+ <link>http://www.nasa.gov/press-release/nasa-administrator-statement-on-meeting-with-ukrainian-president</link>
+ <description>The following is a statement from NASA Administrator Bill Nelson on Ukrainian President Volodymyr Zelenskyy’s visit Tuesday to NASA Headquarters in Washington:</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/51416138114_872802e414_k.jpeg?itok=MKJrk0FR" length="699133" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-administrator-statement-on-meeting-with-ukrainian-president</guid>
+ <pubDate>Tue, 31 Aug 2021 14:36 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>NASA Leadership to Call Space Station Crew</title>
+ <link>http://www.nasa.gov/press-release/nasa-leadership-to-call-space-station-crew</link>
+ <description>NASA Administrator Bill Nelson and Deputy Administrator Pam Melroy will speak with astronauts aboard the International Space Station from the Mission Control Center at the agency’s Johnson Space Center in Houston Thursday, Sept. 2.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/44911459904_375bc02163_k_0.jpg?itok=zVIEAh87" length="1080546" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-leadership-to-call-space-station-crew</guid>
+ <pubDate>Tue, 31 Aug 2021 11:38 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>NASA Sets Coverage for Two Russian Spacewalks Outside Space Station</title>
+ <link>http://www.nasa.gov/press-release/nasa-sets-coverage-for-two-russian-spacewalks-outside-space-station</link>
+ <description>Two Russian cosmonauts will venture outside the International Space Station Friday, Sept. 3, and Thursday, Sept. 9, to conduct the first pair of up to 11 spacewalks to prepare the new Nauka multipurpose laboratory module for operations in space.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/eva_image.jpg?itok=IyvTFPkG" length="799033" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-sets-coverage-for-two-russian-spacewalks-outside-space-station</guid>
+ <pubDate>Mon, 30 Aug 2021 15:57 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>Cutting-Edge Science Launches on NASA’s SpaceX Cargo Resupply Mission</title>
+ <link>http://www.nasa.gov/press-release/cutting-edge-science-launches-on-nasa-s-spacex-cargo-resupply-mission</link>
+ <description>The latest SpaceX Dragon resupply spacecraft is bound for the International Space Station after launching at 3:14 a.m. EDT Sunday from from Launch Complex 39A at NASA’s Kennedy Space Center in Florida, carrying more than 4,800 pounds of science experiments, crew supplies, and spacecraft hardware.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/ksc-20210829-ph-kls01_0024_orig_1041x.jpeg?itok=eP2a19YF" length="830209" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/cutting-edge-science-launches-on-nasa-s-spacex-cargo-resupply-mission</guid>
+ <pubDate>Sun, 29 Aug 2021 03:11 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>Media Invited to Virtual Briefing on Launch of NASA, USGS Landsat 9</title>
+ <link>http://www.nasa.gov/press-release/media-invited-to-virtual-briefing-on-launch-of-nasa-usgs-landsat-9</link>
+ <description>Officials from NASA and the U.S. Geological Survey (USGS) will discuss next month’s planned launch of the Landsat 9 satellite during a media briefing at 10 a.m. EDT Tuesday, Aug. 31.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/landsat9_still_sw2_print_0.jpg?itok=QuUU2eeE" length="122749" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/media-invited-to-virtual-briefing-on-launch-of-nasa-usgs-landsat-9</guid>
+ <pubDate>Fri, 27 Aug 2021 14:00 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>NASA Awards Information Technology Support Services Contract</title>
+ <link>http://www.nasa.gov/press-release/nasa-awards-information-technology-support-services-contract</link>
+ <description>NASA has selected New Directions Technologies Inc. of Ridgecrest, California, for management systems engineering, software development, project management, information technology security, and enterprise architecture support services for the agency’s Kennedy Space Center, Johnson Space Center, and Ames Research Center.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa-logo-web-rgb_0.jpg?itok=mrBnB_c9" length="189751" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-awards-information-technology-support-services-contract</guid>
+ <pubDate>Wed, 25 Aug 2021 15:38 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>Georgia, California Students to Hear from Astronauts on Space Station</title>
+ <link>http://www.nasa.gov/press-release/georgia-california-students-to-hear-from-astronauts-on-space-station</link>
+ <description>Students in Georgia and California will each have an opportunity this week to hear from astronauts aboard the International Space Station.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/iss065e081306_0.jpg?itok=DrwL2J5B" length="2319808" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/georgia-california-students-to-hear-from-astronauts-on-space-station</guid>
+ <pubDate>Wed, 25 Aug 2021 12:23 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>NASA Sets Coverage, Invites Public to Virtually Join Next Cargo Launch</title>
+ <link>http://www.nasa.gov/press-release/nasa-sets-coverage-invites-public-to-virtually-join-next-cargo-launch-0</link>
+ <description>NASA commercial cargo provider SpaceX is targeting Saturday, Aug. 28, at 3:37 a.m. EDT to launch its 23rd commercial resupply services mission to the International Space Station.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/crs-22_0_0.jpg?itok=sq1FBB1W" length="145248" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-sets-coverage-invites-public-to-virtually-join-next-cargo-launch-0</guid>
+ <pubDate>Fri, 20 Aug 2021 15:05 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>Update: NASA Spacewalk Briefing to Highlight New Solar Array Installation</title>
+ <link>http://www.nasa.gov/press-release/update-nasa-spacewalk-briefing-to-highlight-new-solar-array-installation</link>
+ <description>Two astronauts will venture outside the International Space Station Tuesday, Aug. 24, for a spacewalk to install a support bracket in preparation for future installation of the orbiting laboratory’s third new solar array.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/e65_eva77_solar_array_augmentation_plan_4a_irosa_1080.jpg?itok=V7rHvHMc" length="841984" type="image/jpeg" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/update-nasa-spacewalk-briefing-to-highlight-new-solar-array-installation</guid>
+ <pubDate>Wed, 18 Aug 2021 11:14 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+</item>
+ <item> <title>NASA Seeks Student Tech Ideas for Suborbital Launch</title>
+ <link>http://www.nasa.gov/press-release/nasa-seeks-student-tech-ideas-for-suborbital-launch</link>
+ <description>NASA is calling on all sixth through 12th-grade educators and students to submit experiments for possible suborbital flights as a way of gaining firsthand experience with the design and testing process used by NASA researchers.</description>
+ <enclosure url="http://www.nasa.gov/sites/default/files/styles/1x1_cardfeed/public/thumbnails/image/nasa_banner2_1041x320_0.png?itok=qZg7A8mg" length="294772" type="image/png" />
+ <guid isPermaLink="false">http://www.nasa.gov/press-release/nasa-seeks-student-tech-ideas-for-suborbital-launch</guid>
+ <pubDate>Wed, 18 Aug 2021 10:19 EDT</pubDate>
+ <source url="http://www.nasa.gov/rss/dyn/breaking_news.rss">NASA Breaking News</source>
+
+</item>
+</channel>
+</rss>
