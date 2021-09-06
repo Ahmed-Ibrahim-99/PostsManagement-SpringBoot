@@ -6,9 +6,10 @@ import com.example.postsmanagement.service.dataSources.SourceFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.util.List;
 
 // ************************* three tier - discussion
 public interface ParserService {
-    public List<Post> parse(String fileName, String newsItemKey, Class<? extends NewsSource> newsSourceClass, SourceFormat sourceFormat) throws JsonProcessingException, TransformerException;
+    public List<Post> parse(String fileName, String newsItemKey, Class<? extends NewsSource> newsSourceClass, SourceFormat sourceFormat) throws IOException, TransformerException;
 }
