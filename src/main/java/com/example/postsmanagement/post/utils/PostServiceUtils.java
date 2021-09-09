@@ -1,8 +1,8 @@
-package com.example.postsmanagement.service.utils;
+package com.example.postsmanagement.post.utils;
 
-import com.example.postsmanagement.model.Post;
-import com.example.postsmanagement.model.dto.PostDto;
-import com.example.postsmanagement.repo.PostsRepository;
+import com.example.postsmanagement.post.Post;
+import com.example.postsmanagement.post.dto.PostDto;
+import com.example.postsmanagement.post.PostsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

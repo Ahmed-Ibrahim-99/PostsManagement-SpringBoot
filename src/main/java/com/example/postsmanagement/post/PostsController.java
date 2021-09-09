@@ -1,13 +1,11 @@
-package com.example.postsmanagement.controller;
+package com.example.postsmanagement.post;
 
-import com.example.postsmanagement.controller.utils.PostsControllerUtils;
-import com.example.postsmanagement.model.responseModel.*;
+import com.example.postsmanagement.post.utils.PostsControllerUtils;
+import com.example.postsmanagement.post.responseModel.*;
 import com.example.postsmanagement.exception.ConstraintValidationException;
 import com.example.postsmanagement.exception.InvalidRequestParameterException;
-import com.example.postsmanagement.model.Post;
-import com.example.postsmanagement.model.dto.PostDto;
-import com.example.postsmanagement.model.utils.PostUtils;
-import com.example.postsmanagement.service.PostsService;
+import com.example.postsmanagement.post.dto.PostDto;
+import com.example.postsmanagement.post.utils.PostDtoUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,7 +13,6 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,7 +38,7 @@ public class PostsController {
     @GetMapping("/posts/{postId}")
     private ResponseEntity<Object> GetPost(@PathVariable Integer postId) {
         Post requiredPost = postService.getPost(postId);
-        PostDto requiredPostFormatted = PostUtils.mapToDto(requiredPost);
+        PostDto requiredPostFormatted = PostDtoUtils.mapToDto(requiredPost);
         PostsGetResponse getResponse = new PostsGetResponse(requiredPostFormatted);
         return new ResponseEntity<>(getResponse, HttpStatus.OK);
     }
@@ -53,7 +50,7 @@ public class PostsController {
             throw new ConstraintValidationException(errors);
         }
         Post createdPost = postService.addNewPost(newPost);
-        PostDto createdPostFormatted = PostUtils.mapToDto(createdPost);
+        PostDto createdPostFormatted = PostDtoUtils.mapToDto(createdPost);
         PostsResponse createResponse = new PostsCreateResponse(newPost.getPostId(), createdPostFormatted);
         return new ResponseEntity<>(createResponse, HttpStatus.CREATED);
     }
@@ -71,7 +68,7 @@ public class PostsController {
             throw new ConstraintValidationException(errors);
         }
         postService.updatePost(postId, newPost);
-        PostDto updatedPostFormatted = PostUtils.mapToDto(postService.getPost(postId));
+        PostDto updatedPostFormatted = PostDtoUtils.mapToDto(postService.getPost(postId));
         PostsResponse updateResponse = new PostsUpdateResponse(updatedPostFormatted);
         return new ResponseEntity<>(updateResponse, HttpStatus.OK);
     }

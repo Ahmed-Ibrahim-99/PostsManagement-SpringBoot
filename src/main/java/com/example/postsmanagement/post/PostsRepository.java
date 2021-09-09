@@ -1,6 +1,6 @@
-package com.example.postsmanagement.repo;
+package com.example.postsmanagement.post;
 
-import com.example.postsmanagement.model.Post;
+import com.example.postsmanagement.post.Post;
 // import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

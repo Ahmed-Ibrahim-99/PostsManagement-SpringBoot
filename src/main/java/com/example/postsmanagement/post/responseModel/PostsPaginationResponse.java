@@ -1,4 +1,4 @@
-package com.example.postsmanagement.model.responseModel;
+package com.example.postsmanagement.post.responseModel;
 
 import java.util.List;
 

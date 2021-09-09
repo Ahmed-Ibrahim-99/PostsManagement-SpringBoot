@@ -1,4 +1,4 @@
-package com.example.postsmanagement.model.dto;
+package com.example.postsmanagement.post.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

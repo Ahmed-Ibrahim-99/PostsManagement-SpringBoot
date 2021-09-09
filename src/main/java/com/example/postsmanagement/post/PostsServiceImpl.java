@@ -1,12 +1,10 @@
-package com.example.postsmanagement.service;
+package com.example.postsmanagement.post;
 
-import com.example.postsmanagement.model.responseModel.PostsPaginationResponse;
+import com.example.postsmanagement.post.responseModel.PostsPaginationResponse;
 import com.example.postsmanagement.exception.EntityAlreadyExistsException;
 import com.example.postsmanagement.exception.EntityNotFoundException;
-import com.example.postsmanagement.model.Post;
-import com.example.postsmanagement.model.dto.PostDto;
-import com.example.postsmanagement.repo.PostsRepository;
-import com.example.postsmanagement.service.utils.PostServiceUtils;
+import com.example.postsmanagement.post.dto.PostDto;
+import com.example.postsmanagement.post.utils.PostServiceUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 

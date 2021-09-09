@@ -1,4 +1,4 @@
-package com.example.postsmanagement.controller.utils;
+package com.example.postsmanagement.post.utils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.postsmanagement.model;
+package com.example.postsmanagement.post;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Objects;
 

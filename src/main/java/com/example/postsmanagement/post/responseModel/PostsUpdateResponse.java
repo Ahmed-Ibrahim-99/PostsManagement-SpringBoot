@@ -1,6 +1,6 @@
-package com.example.postsmanagement.model.responseModel;
+package com.example.postsmanagement.post.responseModel;
 
-import com.example.postsmanagement.model.dto.PostDto;
+import com.example.postsmanagement.post.dto.PostDto;
 
 import java.util.ArrayList;
 import java.util.List;

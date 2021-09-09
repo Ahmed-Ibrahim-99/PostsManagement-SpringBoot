@@ -1,8 +1,8 @@
-package com.example.postsmanagement.service;
+package com.example.postsmanagement.post;
 
-import com.example.postsmanagement.model.responseModel.PostsPaginationResponse;
-import com.example.postsmanagement.model.Post;
-import com.example.postsmanagement.model.dto.PostDto;
+import com.example.postsmanagement.post.responseModel.PostsPaginationResponse;
+import com.example.postsmanagement.post.Post;
+import com.example.postsmanagement.post.dto.PostDto;
 
 public interface PostsService {
     public Post addNewPost(Post newPost);
