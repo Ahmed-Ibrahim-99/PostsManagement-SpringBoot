@@ -13,7 +13,7 @@ public class Parser {
         this.parseBehavior = parseBehavior;
     }
 
-    public List<Post> getRssPosts(String fileName) throws IOException {
-        return parseBehavior.parse(fileName);
+    public List<Post> getRssPosts(String rssContent) throws IOException {
+        return parseBehavior.parse(rssContent);
     }
 }

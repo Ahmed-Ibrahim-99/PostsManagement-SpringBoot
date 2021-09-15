@@ -16,28 +16,22 @@ import java.util.List;
 import java.lang.Class;
 
 @Transactional
-public class XmlParseImpl <SourceClass extends NewsSource> implements ParseBehavior{
+public class XmlParseImpl implements ParseBehavior{
 
-    private Class<SourceClass> sourceClass;
-    public XmlParseImpl(Class<SourceClass> sourceClass) {
+    private Class<? extends NewsSource> sourceClass;
+    public XmlParseImpl(Class<? extends NewsSource> sourceClass) {
         this.sourceClass = sourceClass;
     }
 
     @Override
-    public List<Post> parse(String fileName) throws IOException {
-        String xmlString = readXmlFile(fileName);
-        NewsSource source = mapXmlToSource(xmlString);
+    public List<Post> parse(String xmlRssContent) throws IOException {
+        NewsSource source = mapXmlToSource(xmlRssContent);
         return source.mapNewsToPosts();
     }
 
-    private String readXmlFile(String fileName) throws IOException {
-        byte[] bytes = Files.readAllBytes(Paths.get(fileName));
-        return new String(bytes);
-    }
-
-    private NewsSource mapXmlToSource(String xmlString) throws JsonProcessingException {
+    private NewsSource mapXmlToSource(String xmlRssContent) throws JsonProcessingException {
         XmlMapper xmlMapper = createXmlMapper();
-        NewsSource source = xmlMapper.readValue(xmlString, sourceClass);
+        NewsSource source = xmlMapper.readValue(xmlRssContent, sourceClass);
         return source;
     }
 

@@ -7,5 +7,5 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ParseBehavior {
-    public List<Post> parse(String fileName) throws IOException;
+    public List<Post> parse(String rssContent) throws IOException;
 }

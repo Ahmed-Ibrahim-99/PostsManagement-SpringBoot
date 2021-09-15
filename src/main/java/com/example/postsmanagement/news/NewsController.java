@@ -1,5 +1,6 @@
 package com.example.postsmanagement.news;
 
+import com.example.postsmanagement.parser.JsonParseImpl;
 import com.example.postsmanagement.parser.Parser;
 import com.example.postsmanagement.parser.XmlParseImpl;
 import com.example.postsmanagement.post.Post;
@@ -13,16 +14,9 @@ import java.util.List;
 
 @RestController
 public class NewsController {
-    private Parser NasaParser;
-
-    public NewsController() {
-        XmlParseImpl<NasaNewsSourceImpl> xmlParse = new XmlParseImpl<>(NasaNewsSourceImpl.class);
-        NasaParser = new Parser(xmlParse);
-    }
-
-    @GetMapping("/nasa")
-    private ResponseEntity<List<Post>> GetNasa() throws IOException {
-        String filename="src/main/java/com/example/postsmanagement/feedSample/news.xml";
-        return new ResponseEntity<>(NasaParser.getRssPosts(filename), HttpStatus.OK);
+    NewsService newsService = new NewsService();
+    @GetMapping("/news")
+    private ResponseEntity<List<Post>> GetNasaXml() throws IOException {
+        return new ResponseEntity<>(newsService.updateNewsPosts(), HttpStatus.OK);
     }
 }

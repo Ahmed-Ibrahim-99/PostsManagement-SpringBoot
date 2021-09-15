@@ -2,23 +2,19 @@ package com.example.postsmanagement.news;
 
 import com.example.postsmanagement.post.Post;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class NasaNewsItem implements NewsItem{
-    @JacksonXmlProperty(localName = "title")
+public class JsonNasaNewsItem implements NewsItem{
     private String title;
-    @JacksonXmlProperty(localName = "link")
     private String link;
-    @JacksonXmlProperty(localName = "description")
     private String description;
 
-    public NasaNewsItem() {
+    public JsonNasaNewsItem() {
     }
 
-    public NasaNewsItem(String title, String link, String description) {
+    public JsonNasaNewsItem(String title, String link, String description) {
         this.title = title;
         this.link = link;
         this.description = description;
@@ -47,7 +43,7 @@ public class NasaNewsItem implements NewsItem{
 
     @Override
     public String toString() {
-        return "NasaNewsItem{" +
+        return "JsonNasaNewsItem{" +
                 "title='" + title + '\'' +
                 ", link='" + link + '\'' +
                 ", description='" + description + '\'' +
@@ -58,7 +54,7 @@ public class NasaNewsItem implements NewsItem{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NasaNewsItem that = (NasaNewsItem) o;
+        JsonNasaNewsItem that = (JsonNasaNewsItem) o;
         return Objects.equals(title, that.title) && Objects.equals(link, that.link) && Objects.equals(description, that.description);
     }
 
